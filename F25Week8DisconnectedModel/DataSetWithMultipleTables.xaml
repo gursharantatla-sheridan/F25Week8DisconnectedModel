@@ -1,0 +1,15 @@
+﻿<Window x:Class="F25Week8DisconnectedModel.DataSetWithMultipleTables"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:F25Week8DisconnectedModel"
+        mc:Ignorable="d"
+        Title="DataSetWithMultipleTables" Height="450" Width="800">
+    <Canvas>
+        <Button x:Name="btnLoad" Content="Load" Canvas.Left="24" Canvas.Top="26" Height="42" Width="75" Click="btnLoad_Click"/>
+        <DataGrid x:Name="grdCategories" Height="276" Width="357" d:ItemsSource="{d:SampleData ItemCount=5}" Canvas.Left="24" Canvas.Top="98"/>
+        <DataGrid x:Name="grdProducts" Height="276" Width="357" d:ItemsSource="{d:SampleData ItemCount=5}" Canvas.Left="420" Canvas.Top="98" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+    </Canvas>
+</Window>
