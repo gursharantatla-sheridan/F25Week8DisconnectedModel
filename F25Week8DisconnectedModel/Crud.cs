@@ -35,13 +35,34 @@ namespace F25Week8DisconnectedModel
             _tblProducts = _ds.Tables["Products"];
 
             // define a primary key
-
+            DataColumn[] pk = new DataColumn[1];
+            pk[0] = _tblProducts.Columns["ProductID"];
+            pk[0].AutoIncrement = true;
+            _tblProducts.PrimaryKey = pk;
         }
 
         public DataTable GetAllProducts()
         {
             InitProductTable();
             return _tblProducts;
+        }
+
+        public DataRow GetProductById(int id)
+        {
+            var row = _tblProducts.Rows.Find(id);
+            return row;
+        }
+
+        public void InsertProduct(string name, decimal price, short quantity)
+        {
+            var row = _tblProducts.NewRow();
+            row["ProductName"] = name;
+            row["UnitPrice"] = price;
+            row["UnitsInStock"] = quantity;
+            _tblProducts.Rows.Add(row);
+
+            _adp.InsertCommand = _cmdBuilder.GetInsertCommand();
+            _adp.Update(_tblProducts);
         }
     }
 }

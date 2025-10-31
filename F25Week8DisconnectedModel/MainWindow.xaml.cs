@@ -35,5 +35,35 @@ namespace F25Week8DisconnectedModel
             DataSetWithMultipleTables win2 = new DataSetWithMultipleTables();
             win2.Show();
         }
+
+        private void btnFind_Click(object sender, RoutedEventArgs e)
+        {
+            int id = Convert.ToInt32(txtId.Text);
+            var row = crud.GetProductById(id);
+            
+            if (row != null)
+            {
+                txtName.Text = row["ProductName"].ToString();
+                txtPrice.Text = row["UnitPrice"].ToString();
+                txtQuantity.Text = row["UnitsInStock"].ToString();
+            }
+            else
+            {
+                txtName.Text = txtPrice.Text = txtQuantity.Text = "";
+                MessageBox.Show("Invalid ID. Please try again");
+            }
+        }
+
+        private void btnInsert_Click(object sender, RoutedEventArgs e)
+        {
+            string name = txtName.Text;
+            decimal price = Convert.ToDecimal(txtPrice.Text);
+            short quantity = Convert.ToInt16(txtQuantity.Text);
+
+            crud.InsertProduct(name, price, quantity);
+
+            grdProducts.ItemsSource = crud.GetAllProducts().DefaultView;
+            MessageBox.Show("New product added");
+        }
     }
 }
