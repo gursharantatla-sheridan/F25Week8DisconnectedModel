@@ -17,6 +17,7 @@ namespace F25Week8DisconnectedModel
     public partial class MainWindow : Window
     {
         Data data = new Data();
+        Crud crud = new Crud();
 
         public MainWindow()
         {
@@ -25,7 +26,8 @@ namespace F25Week8DisconnectedModel
 
         private void btnLoadAllProducts_Click(object sender, RoutedEventArgs e)
         {
-            grdProducts.ItemsSource = data.GetAllProducts().DefaultView;
+            //grdProducts.ItemsSource = data.GetAllProducts().DefaultView;
+            grdProducts.ItemsSource = crud.GetAllProducts().DefaultView;
         }
 
         private void btnShowWindow2_Click(object sender, RoutedEventArgs e)
