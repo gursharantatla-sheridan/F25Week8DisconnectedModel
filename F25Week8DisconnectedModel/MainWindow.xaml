@@ -19,7 +19,7 @@
         <TextBox x:Name="txtPrice" Canvas.Left="531" Canvas.Top="173" TextWrapping="NoWrap" Width="237" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <TextBox x:Name="txtQuantity" Canvas.Left="532" Canvas.Top="215" TextWrapping="NoWrap" Width="236" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Button x:Name="btnFind" Content="Find" Canvas.Left="650" Canvas.Top="85" Height="30" Width="118" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btnFind_Click"/>
-        <Button x:Name="btnSearch" Content="Search" Canvas.Left="650" Canvas.Top="130" Height="30" Width="118" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Button x:Name="btnSearch" Content="Search" Canvas.Left="650" Canvas.Top="130" Height="30" Width="118" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btnSearch_Click"/>
         <Button x:Name="btnInsert" Content="Insert" Canvas.Left="434" Canvas.Top="265" Height="30" Width="94" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btnInsert_Click"/>
         <Button x:Name="btnUpdate" Content="Update" Canvas.Left="553" Canvas.Top="265" Height="30" Width="94" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btnUpdate_Click"/>
         <Button x:Name="btnDelete" Content="Delete" Canvas.Left="674" Canvas.Top="265" Height="30" Width="94" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btnDelete_Click"/>

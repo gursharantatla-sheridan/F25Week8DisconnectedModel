@@ -84,5 +84,21 @@ namespace F25Week8DisconnectedModel
             _adp.DeleteCommand = _cmdBuilder.GetDeleteCommand();
             _adp.Update(_tblProducts);
         }
+
+        public DataTable SearchProducts(string name)
+        {
+            string query = "select ProductID, ProductName, UnitPrice, UnitsInStock from Products where ProductName like @pName";
+
+            SqlCommand cmd = new SqlCommand(query, _conn);
+            cmd.Parameters.AddWithValue("pName", "%" + name + "%");
+
+            SqlDataAdapter adp = new SqlDataAdapter(cmd);
+
+            if (_ds.Tables.Contains("Products2"))
+                _ds.Tables["Products2"].Clear();
+
+            adp.Fill(_ds, "Products2");
+            return _ds.Tables["Products2"];
+        }
     }
 }
