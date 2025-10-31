@@ -100,5 +100,29 @@ namespace F25Week8DisconnectedModel
             adp.Fill(_ds, "Products2");
             return _ds.Tables["Products2"];
         }
+
+        public DataTable GetCategories()
+        {
+            string query = "select CategoryID, CategoryName from Categories";
+
+            SqlDataAdapter adpCats = new SqlDataAdapter(query, _conn);
+            adpCats.Fill(_ds, "Categories");
+
+            return _ds.Tables["Categories"];
+        }
+
+        public DataTable GetProductsByCategory(int catId)
+        {
+            string query = "select p.ProductID, p.ProductName, c.CategoryName from Categories c inner join Products p on c.CategoryID = p.CategoryID where p.CategoryID = @catId";
+
+            SqlCommand cmd = new SqlCommand(query, _conn);
+            cmd.Parameters.AddWithValue("catId", catId);
+
+            SqlDataAdapter adpProds = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+
+            adpProds.Fill(ds, "Prods");
+            return ds.Tables["Prods"];
+        }
     }
 }

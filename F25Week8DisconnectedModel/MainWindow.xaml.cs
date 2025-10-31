@@ -93,5 +93,21 @@ namespace F25Week8DisconnectedModel
         {
             grdProducts.ItemsSource = crud.SearchProducts(txtName.Text).DefaultView;
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            cmbCategories.ItemsSource = crud.GetCategories().DefaultView;
+            cmbCategories.DisplayMemberPath = "CategoryName";
+            cmbCategories.SelectedValuePath = "CategoryID";
+        }
+
+        private void cmbCategories_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmbCategories.SelectedItem != null)
+            {
+                int catId = (int)cmbCategories.SelectedValue;
+                grdProducts.ItemsSource = crud.GetProductsByCategory(catId).DefaultView;
+            }
+        }
     }
 }
