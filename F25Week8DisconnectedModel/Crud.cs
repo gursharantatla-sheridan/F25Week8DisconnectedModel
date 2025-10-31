@@ -64,5 +64,25 @@ namespace F25Week8DisconnectedModel
             _adp.InsertCommand = _cmdBuilder.GetInsertCommand();
             _adp.Update(_tblProducts);
         }
+
+        public void UpdateProduct(int id, string name, decimal price, short quantity)
+        {
+            var row = GetProductById(id);
+            row["ProductName"] = name;
+            row["UnitPrice"] = price;
+            row["UnitsInStock"] = quantity;
+
+            _adp.UpdateCommand = _cmdBuilder.GetUpdateCommand();
+            _adp.Update(_tblProducts);
+        }
+
+        public void DeleteProduct(int id)
+        {
+            var row = GetProductById(id);
+            row.Delete();
+
+            _adp.DeleteCommand = _cmdBuilder.GetDeleteCommand();
+            _adp.Update(_tblProducts);
+        }
     }
 }
